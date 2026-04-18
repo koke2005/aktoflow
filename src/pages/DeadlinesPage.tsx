@@ -1,7 +1,9 @@
 import { CalendarDays, Trash2 } from 'lucide-react'
 import { type FormEvent, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { EmptyState } from '../components/EmptyState'
 import { Modal } from '../components/Modal'
+import { Spinner } from '../components/Spinner'
 import {
   deriveDeadlineVisualStatus,
   useFirmDeadlines,
@@ -170,14 +172,17 @@ export function DeadlinesPage() {
   }, [deadlines, statusFilter, clientFilter, calendarDayFilter, today])
 
   const monthGrid = useMemo(() => getMonthGrid(calYear, calMonth), [calYear, calMonth])
-
-  const weekdayLabels = useMemo(() => {
-    const fmt = new Intl.DateTimeFormat(i18n.language, { weekday: 'short' })
-    return Array.from({ length: 7 }, (_, i) => {
-      const d = new Date(2024, 0, 1 + i)
-      return fmt.format(d)
-    })
-  }, [i18n.language])
+  const locale = i18n.language === 'en' ? 'en-US' : 'sr-Latn-RS'
+  const weekdayLabels = t('calendar.days', { returnObjects: true }) as string[]
+  const monthLabels = t('calendar.months', { returnObjects: true }) as string[]
+  const monthTitleFromLocale = new Intl.DateTimeFormat(locale, {
+    month: 'long',
+    year: 'numeric',
+  }).format(new Date(calYear, calMonth, 1))
+  const monthTitle =
+    monthLabels[calMonth] && i18n.language === 'sr'
+      ? `${monthLabels[calMonth]} ${calYear}`
+      : monthTitleFromLocale
 
   async function handleAdd(e: FormEvent) {
     e.preventDefault()
@@ -241,11 +246,7 @@ export function DeadlinesPage() {
   }
 
   if (loading || clientsLoading) {
-    return (
-      <div className="flex min-h-[40vh] items-center justify-center">
-        <div className="size-10 animate-spin rounded-full border-2 border-primary border-t-transparent" />
-      </div>
-    )
+    return <Spinner label={t('common.loading')} fullPage />
   }
 
   if (error) {
@@ -332,10 +333,7 @@ export function DeadlinesPage() {
         </div>
 
         {filteredRows.length === 0 ? (
-          <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-slate-200 bg-white py-16 text-center">
-            <CalendarDays className="mb-3 size-12 text-slate-300" aria-hidden />
-            <p className="text-slate-600">{t('deadlinesPage.tableEmpty')}</p>
-          </div>
+          <EmptyState icon={CalendarDays} message={t('deadlinesPage.tableEmpty')} />
         ) : (
           <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">
             <table className="w-full min-w-[900px] text-left text-sm">
@@ -411,9 +409,7 @@ export function DeadlinesPage() {
         </h3>
         <div className="max-w-md rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
           <p className="mb-3 text-center text-sm font-medium text-slate-700">
-            {new Intl.DateTimeFormat(undefined, { month: 'long', year: 'numeric' }).format(
-              new Date(calYear, calMonth, 1),
-            )}
+            {monthTitle}
           </p>
           <div className="grid grid-cols-7 gap-1 text-center text-xs font-medium text-slate-500">
             {weekdayLabels.map((d) => (

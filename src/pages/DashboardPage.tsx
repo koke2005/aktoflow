@@ -1,7 +1,10 @@
 import { type FormEvent, useState } from 'react'
+import { Inbox } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
+import { EmptyState } from '../components/EmptyState'
 import { Modal } from '../components/Modal'
+import { Spinner } from '../components/Spinner'
 import {
   type DashboardDeadlineItem,
   type DashboardDocumentMissingItem,
@@ -65,7 +68,7 @@ function CardShell({
       ? 'w-full rounded-lg bg-primary py-1.5 text-xs font-medium text-white hover:opacity-90'
       : 'w-full rounded-lg border border-slate-200 bg-white py-1.5 text-xs font-medium text-slate-800 hover:bg-slate-50'
   return (
-    <div className="rounded-lg border border-slate-100 bg-slate-50/80 p-3 shadow-sm">
+    <div className="rounded-lg border border-slate-100 bg-slate-50/80 p-3 shadow-sm transition-shadow hover:shadow-md">
       <p className="font-bold text-slate-900">{clientName}</p>
       <p className="mt-1 text-sm text-slate-700">{subtitle}</p>
       <p className="mt-0.5 text-xs text-slate-500">{meta}</p>
@@ -242,11 +245,7 @@ export function DashboardPage() {
   }
 
   if (loading) {
-    return (
-      <div className="flex min-h-[50vh] items-center justify-center">
-        <div className="size-10 animate-spin rounded-full border-2 border-primary border-t-transparent" />
-      </div>
-    )
+    return <Spinner label={t('common.loading')} fullPage />
   }
 
   if (error) {
@@ -258,10 +257,14 @@ export function DashboardPage() {
   }
 
   if (!buckets) {
-    return (
-      <p className="text-slate-600">{t('dashboard.radar.noFirm')}</p>
-    )
+    return <EmptyState icon={Inbox} message={t('dashboard.radar.noFirm')} />
   }
+
+  const allColumnsEmpty =
+    counts.overdue === 0 &&
+    counts.soon === 0 &&
+    counts.missing === 0 &&
+    counts.done === 0
 
   return (
     <div className="flex min-w-0 flex-col gap-4">
@@ -297,7 +300,10 @@ export function DashboardPage() {
         </div>
       </div>
 
-      <div className="grid h-[calc(100vh-140px)] min-h-[280px] w-full min-w-0 grid-cols-1 gap-3 overflow-x-hidden lg:grid-cols-4">
+      {allColumnsEmpty ? (
+        <EmptyState icon={Inbox} message={t('dashboard.radar.allEmpty')} />
+      ) : (
+        <div className="grid h-[calc(100vh-140px)] min-h-[280px] w-full min-w-0 grid-cols-1 gap-3 overflow-x-hidden lg:grid-cols-4">
         <Column
           titleKey="dashboard.radar.col.overdue"
           headerClass="rounded-t-xl bg-[#ef4444]"
@@ -361,7 +367,8 @@ export function DashboardPage() {
             </p>
           ) : null}
         </Column>
-      </div>
+        </div>
+      )}
 
       <Modal
         open={uploadOpen}

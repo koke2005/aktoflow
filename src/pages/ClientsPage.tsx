@@ -1,7 +1,10 @@
 import { type FormEvent, useMemo, useState } from 'react'
+import { ClipboardList } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
+import { EmptyState } from '../components/EmptyState'
 import { Modal } from '../components/Modal'
+import { Spinner } from '../components/Spinner'
 import { useClients } from '../hooks/useClients'
 import { useToastStore } from '../store/toastStore'
 import type { BusinessType, ClientStatus, ServiceType } from '../types/database'
@@ -21,6 +24,17 @@ function serviceClass(s: ServiceType): string {
     default:
       return 'bg-slate-100 text-slate-700'
   }
+}
+
+function formatPib(pib: string | null): string {
+  if (!pib) {
+    return '—'
+  }
+  const digits = pib.replace(/\D/g, '')
+  if (digits.length !== 9) {
+    return pib
+  }
+  return `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6)}`
 }
 
 export function ClientsPage() {
@@ -138,22 +152,9 @@ export function ClientsPage() {
       ) : null}
 
       {loading ? (
-        <div className="space-y-3 rounded-xl border border-slate-200 bg-white p-4">
-          {[0, 1, 2].map((i) => (
-            <div
-              key={i}
-              className="h-12 animate-pulse rounded-lg bg-slate-100"
-              aria-hidden
-            />
-          ))}
-        </div>
+        <Spinner label={t('common.loading')} fullPage />
       ) : clients.length === 0 ? (
-        <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-slate-200 bg-white px-6 py-16 text-center">
-          <div className="mb-4 text-5xl" aria-hidden>
-            📋
-          </div>
-          <p className="max-w-md text-slate-600">{t('clients.empty')}</p>
-        </div>
+        <EmptyState icon={ClipboardList} message={t('clients.empty')} />
       ) : (
         <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">
           <table className="w-full min-w-[720px] text-left text-sm">
@@ -170,9 +171,13 @@ export function ClientsPage() {
             </thead>
             <tbody>
               {clients.map((c) => (
-                <tr key={c.id} className="border-b border-slate-100 last:border-0">
+                <tr
+                  key={c.id}
+                  className="cursor-pointer border-b border-slate-100 transition-colors hover:bg-slate-50 last:border-0"
+                  onClick={() => navigate(`/clients/${c.id}`)}
+                >
                   <td className="px-4 py-3 font-medium text-slate-900">{c.name}</td>
-                  <td className="px-4 py-3 text-slate-700">{c.pib ?? '—'}</td>
+                  <td className="px-4 py-3 text-slate-700">{formatPib(c.pib)}</td>
                   <td className="px-4 py-3 text-slate-700">
                     {t(`clients.businessType.${c.business_type}`)}
                   </td>
@@ -207,7 +212,10 @@ export function ClientsPage() {
                   <td className="px-4 py-3">
                     <button
                       type="button"
-                      onClick={() => navigate(`/clients/${c.id}`)}
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        navigate(`/clients/${c.id}`)
+                      }}
                       className="font-medium text-accent hover:underline"
                     >
                       {t('clients.open')}

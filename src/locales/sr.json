@@ -5,6 +5,23 @@
   "common": {
     "loading": "Učitavanje…"
   },
+  "calendar": {
+    "days": ["Pon", "Uto", "Sri", "Čet", "Pet", "Sub", "Ned"],
+    "months": [
+      "Januar",
+      "Februar",
+      "Mart",
+      "April",
+      "Maj",
+      "Jun",
+      "Jul",
+      "Avgust",
+      "Septembar",
+      "Oktobar",
+      "Novembar",
+      "Decembar"
+    ]
+  },
   "languageModal": {
     "title": "Izaberite jezik / Choose language",
     "descriptionSr": "Upravljajte dokumentima i rokovima vaših klijenata",
@@ -143,7 +160,8 @@
       "uploadTitle": "Upload dokumenta",
       "file": "Fajl",
       "periodMonth": "Period (mesec)",
-      "saveUpload": "Sačuvaj"
+      "saveUpload": "Sačuvaj",
+      "emptyState": "Još nema dokumenata. Dodajte zahtjev u Smart detektoru."
     },
     "deadlines": {
       "addTitle": "Dodaj rok",
@@ -238,6 +256,11 @@
   "settings": {
     "title": "Podešavanja",
     "subtitle": "Firma, jezik, tim i pretplata.",
+    "profileSection": "Profil",
+    "profileName": "Ime i prezime",
+    "profileSave": "Sačuvaj profil",
+    "profileSaveSuccess": "Profil je ažuriran.",
+    "profileSaveError": "Čuvanje profila nije uspelo.",
     "firmSection": "Podaci firme",
     "firmName": "Naziv firme",
     "planLabel": "Plan",
@@ -298,7 +321,8 @@
       "uploadPeriod": "Period (mesec)",
       "uploadSave": "Pošalji",
       "uploadSuccess": "Dokument je dodat.",
-      "uploadError": "Upload nije uspeo."
+      "uploadError": "Upload nije uspeo.",
+      "allEmpty": "Dodajte klijente i rokove da vidite pregled"
     }
   }
 }

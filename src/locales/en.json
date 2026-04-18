@@ -5,6 +5,23 @@
   "common": {
     "loading": "Loading…"
   },
+  "calendar": {
+    "days": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    "months": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ]
+  },
   "languageModal": {
     "title": "Choose language / Izaberite jezik",
     "descriptionSr": "Upravljajte dokumentima i rokovima vaših klijenata",
@@ -143,7 +160,8 @@
       "uploadTitle": "Upload document",
       "file": "File",
       "periodMonth": "Period (month)",
-      "saveUpload": "Save"
+      "saveUpload": "Save",
+      "emptyState": "No documents yet. Add a requirement in Smart detector."
     },
     "deadlines": {
       "addTitle": "Add deadline",
@@ -238,6 +256,11 @@
   "settings": {
     "title": "Settings",
     "subtitle": "Company, language, team and billing.",
+    "profileSection": "Profile",
+    "profileName": "Full name",
+    "profileSave": "Save profile",
+    "profileSaveSuccess": "Profile updated.",
+    "profileSaveError": "Could not save profile.",
     "firmSection": "Company details",
     "firmName": "Company name",
     "planLabel": "Plan",
@@ -298,7 +321,8 @@
       "uploadPeriod": "Period (month)",
       "uploadSave": "Submit",
       "uploadSuccess": "Document added.",
-      "uploadError": "Upload failed."
+      "uploadError": "Upload failed.",
+      "allEmpty": "Add clients and deadlines to see overview"
     }
   }
 }

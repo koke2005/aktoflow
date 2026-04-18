@@ -10,10 +10,13 @@ export function SettingsPage() {
   const { t } = useTranslation()
   const toast = useToastStore((s) => s.show)
   const profile = useAuthStore((s) => s.profile)
+  const loadProfile = useAuthStore((s) => s.loadProfile)
 
   const [firmName, setFirmName] = useState('')
   const [plan, setPlan] = useState<FirmPlan>('solo')
   const [savingFirm, setSavingFirm] = useState(false)
+  const [fullName, setFullName] = useState('')
+  const [savingProfile, setSavingProfile] = useState(false)
 
   const [teamUsers, setTeamUsers] = useState<
     { id: string; full_name: string; email: string; role: string }[]
@@ -33,6 +36,10 @@ export function SettingsPage() {
       setPlan((data.plan as FirmPlan) ?? 'solo')
     }
   }, [profile?.firm_id])
+
+  useEffect(() => {
+    setFullName(profile?.full_name ?? '')
+  }, [profile?.full_name])
 
   const loadTeamUsers = useCallback(async () => {
     if (!profile?.firm_id) {
@@ -79,6 +86,25 @@ export function SettingsPage() {
     toast('success', t('settings.firmSaveSuccess'))
   }
 
+  async function saveProfile(e: FormEvent) {
+    e.preventDefault()
+    if (!profile?.id || !fullName.trim()) {
+      return
+    }
+    setSavingProfile(true)
+    const { error } = await supabase
+      .from('users')
+      .update({ full_name: fullName.trim() })
+      .eq('id', profile.id)
+    setSavingProfile(false)
+    if (error) {
+      toast('error', t('settings.profileSaveError'))
+      return
+    }
+    await loadProfile()
+    toast('success', t('settings.profileSaveSuccess'))
+  }
+
   function setLanguage(lng: AppLanguage) {
     try {
       localStorage.setItem(LANGUAGE_STORAGE_KEY, lng)
@@ -95,6 +121,30 @@ export function SettingsPage() {
         <h2 className="text-xl font-semibold text-primary">{t('settings.title')}</h2>
         <p className="mt-1 text-sm text-slate-600">{t('settings.subtitle')}</p>
       </div>
+
+      <section className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+        <h3 className="text-sm font-semibold text-slate-900">{t('settings.profileSection')}</h3>
+        <form onSubmit={saveProfile} className="mt-4 space-y-4">
+          <div>
+            <label htmlFor="profile-name" className="block text-sm font-medium text-slate-700">
+              {t('settings.profileName')}
+            </label>
+            <input
+              id="profile-name"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+              className="mt-1 w-full max-w-md rounded-lg border border-slate-300 px-3 py-2"
+            />
+          </div>
+          <button
+            type="submit"
+            disabled={savingProfile}
+            className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white hover:opacity-90 disabled:opacity-60"
+          >
+            {savingProfile ? t('auth.submitting') : t('settings.profileSave')}
+          </button>
+        </form>
+      </section>
 
       <section className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
         <h3 className="text-sm font-semibold text-slate-900">{t('settings.firmSection')}</h3>

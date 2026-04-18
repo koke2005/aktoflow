@@ -8,7 +8,9 @@ import {
 } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import { EmptyState } from '../components/EmptyState'
 import { Modal } from '../components/Modal'
+import { Spinner } from '../components/Spinner'
 import { Tabs } from '../components/Tabs'
 import { useClient } from '../hooks/useClient'
 import { useDeadlines } from '../hooks/useDeadlines'
@@ -235,11 +237,7 @@ export function ClientDetailPage() {
   )
 
   if (clientLoading || !clientId) {
-    return (
-      <div className="flex min-h-[40vh] items-center justify-center">
-        <div className="size-10 animate-spin rounded-full border-2 border-primary border-t-transparent" />
-      </div>
-    )
+    return <Spinner label={t('common.loading')} fullPage />
   }
 
   if (clientError || !client) {
@@ -384,7 +382,12 @@ export function ClientDetailPage() {
               </button>
             </div>
             {docLoading ? (
-              <p className="text-slate-500">{t('common.loading')}</p>
+              <Spinner label={t('common.loading')} fullPage />
+            ) : requirements.length === 0 ? (
+              <EmptyState
+                icon={FileText}
+                message={t('clientDetail.documents.emptyState')}
+              />
             ) : (
               <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
                 <table className="w-full min-w-[800px] text-left text-sm">
@@ -548,7 +551,7 @@ export function ClientDetailPage() {
             </form>
 
             {dlLoading ? (
-              <p>{t('common.loading')}</p>
+              <Spinner label={t('common.loading')} fullPage />
             ) : (
               <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
                 <table className="w-full min-w-[720px] text-sm">
