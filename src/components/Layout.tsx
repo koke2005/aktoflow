@@ -13,6 +13,7 @@ import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../hooks/useAuth'
 import { useThemeStore } from '../store/themeStore'
+import { Onboarding } from './Onboarding'
 import { ToastViewport } from './Toast'
 
 /** Glavni layout sa sidebarom za ulogovane korisnike. */
@@ -135,6 +136,7 @@ export function Layout() {
         </main>
       </div>
       <ToastViewport />
+      <Onboarding />
     </div>
   )
 }

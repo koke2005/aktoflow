@@ -300,6 +300,38 @@
   "theme": {
     "toggle": "Promijeni temu"
   },
+  "onboarding": {
+    "progress": "Korak {{current}} od {{total}}",
+    "skip": "Preskoči vodič",
+    "next": "Dalje",
+    "back": "Nazad",
+    "addClient": "Dodaj prvog klijenta",
+    "goDashboard": "Idi na Dashboard",
+    "step1": {
+      "title": "Dobrodošli u AktoFlow!",
+      "text": "Za nekoliko koraka ćemo vas provesti kroz osnovne funkcije. Cijeli vodič traje manje od 2 minute.",
+      "cta": "Počnimo →"
+    },
+    "step2": {
+      "title": "Dodajte prvog klijenta",
+      "text": "U sekciji Klijenti možete dodati sve vaše klijente. Za svakog klijenta pratite dokumente, rokove i status.",
+      "cta": "Razumijem →"
+    },
+    "step3": {
+      "title": "Smart detektor dokumenata",
+      "text": "AktoFlow automatski detektuje koji dokumenti nedostaju za svakog klijenta. Definirajte šta trebate, sistem vas upozorava šta fali.",
+      "cta": "Odlično →"
+    },
+    "step4": {
+      "title": "Today Radar — vaš dnevni pregled",
+      "text": "Dashboard vam u sekundi pokazuje šta je hitno, šta dolazi i šta je završeno. Nikad više propuštenih rokova.",
+      "cta": "Super →"
+    },
+    "step5": {
+      "title": "Spremni ste!",
+      "text": "Počnite tako što ćete dodati prvog klijenta. Ako trebate pomoć, sve funkcije su intuitivne i dostupne u bočnom meniju."
+    }
+  },
   "dashboard": {
     "title": "Kontrolna tabla",
     "subtitle": "Pregled obaveza i rokova.",

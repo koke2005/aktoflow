@@ -300,6 +300,38 @@
   "theme": {
     "toggle": "Toggle theme"
   },
+  "onboarding": {
+    "progress": "Step {{current}} of {{total}}",
+    "skip": "Skip tour",
+    "next": "Next",
+    "back": "Back",
+    "addClient": "Add your first client",
+    "goDashboard": "Go to Dashboard",
+    "step1": {
+      "title": "Welcome to AktoFlow!",
+      "text": "In a few quick steps we’ll walk you through the basics. The whole tour takes less than 2 minutes.",
+      "cta": "Let’s go →"
+    },
+    "step2": {
+      "title": "Add your first client",
+      "text": "In Clients you can add all your clients. For each one you track documents, deadlines, and status.",
+      "cta": "Got it →"
+    },
+    "step3": {
+      "title": "Smart document detector",
+      "text": "AktoFlow automatically detects which documents are missing for each client. Define what you need—the system warns you what’s still outstanding.",
+      "cta": "Great →"
+    },
+    "step4": {
+      "title": "Today Radar — your daily overview",
+      "text": "The dashboard shows what’s urgent, what’s coming up, and what’s done—in seconds. No more missed deadlines.",
+      "cta": "Awesome →"
+    },
+    "step5": {
+      "title": "You’re ready!",
+      "text": "Start by adding your first client. If you need help, everything is intuitive and available in the side menu."
+    }
+  },
   "dashboard": {
     "title": "Dashboard",
     "subtitle": "Overview of tasks and deadlines.",
