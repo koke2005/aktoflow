@@ -5,6 +5,13 @@
   "common": {
     "loading": "Učitavanje…"
   },
+  "export": {
+    "pdf": "Izvezi PDF",
+    "generating": "Generišem PDF…",
+    "clients": "Izvezi PDF",
+    "report": "Izvezi izvještaj",
+    "deadlines": "Izvezi PDF"
+  },
   "calendar": {
     "days": ["Pon", "Uto", "Sri", "Čet", "Pet", "Sub", "Ned"],
     "months": [

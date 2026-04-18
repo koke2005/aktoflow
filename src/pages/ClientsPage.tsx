@@ -6,8 +6,11 @@ import { EmptyState } from '../components/EmptyState'
 import { Modal } from '../components/Modal'
 import { Spinner } from '../components/Spinner'
 import { useClients } from '../hooks/useClients'
+import { supabase } from '../lib/supabase'
+import { useAuthStore } from '../store/authStore'
 import { useToastStore } from '../store/toastStore'
 import type { BusinessType, ClientStatus, ServiceType } from '../types/database'
+import { exportClientsList } from '../utils/pdfExport'
 
 const PIB_REGEX = /^\d{9,13}$/
 
@@ -41,6 +44,7 @@ export function ClientsPage() {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const toast = useToastStore((s) => s.show)
+  const profile = useAuthStore((s) => s.profile)
   const { clients, loading, error, firmId, addClient } = useClients()
 
   const [modalOpen, setModalOpen] = useState(false)
@@ -129,20 +133,54 @@ export function ClientsPage() {
     }
   }
 
+  async function handleExportPdf() {
+    toast('info', t('export.generating'))
+    let firmName = t('nav.firmName')
+    if (profile?.firm_id) {
+      const { data } = await supabase
+        .from('firms')
+        .select('name')
+        .eq('id', profile.firm_id)
+        .maybeSingle()
+      if (data?.name) {
+        firmName = data.name
+      }
+    }
+    exportClientsList(
+      clients.map((c) => ({
+        name: c.name,
+        pib: c.pib,
+        businessType: t(`clients.businessType.${c.business_type}`),
+        services: c.services.map((s) => t(`clients.servicesShort.${s}`)).join(', '),
+        status: t(`clients.status.${c.status}`),
+      })),
+      firmName,
+    )
+  }
+
   return (
     <div>
       <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <h2 className="text-xl font-semibold text-slate-900">{t('clients.title')}</h2>
-        <button
-          type="button"
-          onClick={() => {
-            resetForm()
-            setModalOpen(true)
-          }}
-          className="inline-flex justify-center rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-white transition hover:opacity-90"
-        >
-          {t('clients.addButton')}
-        </button>
+        <div className="flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={handleExportPdf}
+            className="inline-flex justify-center rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
+          >
+            {t('export.clients')}
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              resetForm()
+              setModalOpen(true)
+            }}
+            className="inline-flex justify-center rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-white transition hover:opacity-90"
+          >
+            {t('clients.addButton')}
+          </button>
+        </div>
       </div>
 
       {error ? (

@@ -10,8 +10,11 @@ import {
   type DeadlineWithClient,
 } from '../hooks/useDeadlines'
 import { useClients } from '../hooks/useClients'
+import { supabase } from '../lib/supabase'
+import { useAuthStore } from '../store/authStore'
 import { useToastStore } from '../store/toastStore'
 import type { DeadlineType } from '../types/database'
+import { exportDeadlinesList } from '../utils/pdfExport'
 
 function todayISODateLocal(): string {
   const d = new Date()
@@ -95,6 +98,7 @@ type StatusFilter = 'all' | 'pending' | 'overdue' | 'completed'
 export function DeadlinesPage() {
   const { t, i18n } = useTranslation()
   const toast = useToastStore((s) => s.show)
+  const profile = useAuthStore((s) => s.profile)
   const { clients, loading: clientsLoading } = useClients()
   const {
     deadlines,
@@ -231,6 +235,35 @@ export function DeadlinesPage() {
     }
   }
 
+  async function handleExportPdf() {
+    toast('info', t('export.generating'))
+    let firmName = t('nav.firmName')
+    if (profile?.firm_id) {
+      const { data } = await supabase
+        .from('firms')
+        .select('name')
+        .eq('id', profile.firm_id)
+        .maybeSingle()
+      if (data?.name) {
+        firmName = data.name
+      }
+    }
+
+    const todayLocal = todayISODateLocal()
+    exportDeadlinesList(
+      deadlines.map((d) => ({
+        clientName: d.client_name,
+        title: d.title,
+        type: t(
+          `clientDetail.deadlineTypes.${d.type === 'custom' ? 'ostalo' : d.type}`,
+        ),
+        date: d.due_date,
+        status: deriveDeadlineVisualStatus(d, todayLocal),
+      })),
+      firmName,
+    )
+  }
+
   function statusBadgeClass(vis: ReturnType<typeof deriveDeadlineVisualStatus>): string {
     if (vis === 'completed') {
       return 'bg-emerald-100 text-emerald-800'
@@ -261,13 +294,22 @@ export function DeadlinesPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <h2 className="text-xl font-semibold text-slate-900">{t('deadlinesPage.title')}</h2>
-        <button
-          type="button"
-          onClick={() => setModalOpen(true)}
-          className="inline-flex justify-center rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-white transition hover:opacity-90"
-        >
-          {t('deadlinesPage.addButton')}
-        </button>
+        <div className="flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={handleExportPdf}
+            className="inline-flex justify-center rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
+          >
+            {t('export.deadlines')}
+          </button>
+          <button
+            type="button"
+            onClick={() => setModalOpen(true)}
+            className="inline-flex justify-center rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-white transition hover:opacity-90"
+          >
+            {t('deadlinesPage.addButton')}
+          </button>
+        </div>
       </div>
 
       <div className="grid grid-cols-3 gap-3">

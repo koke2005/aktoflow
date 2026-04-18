@@ -13,7 +13,7 @@ import { Modal } from '../components/Modal'
 import { Spinner } from '../components/Spinner'
 import { Tabs } from '../components/Tabs'
 import { useClient } from '../hooks/useClient'
-import { useDeadlines } from '../hooks/useDeadlines'
+import { deriveDeadlineVisualStatus, useDeadlines } from '../hooks/useDeadlines'
 import { useDocuments } from '../hooks/useDocuments'
 import {
   addCustomDocumentRequirement,
@@ -26,8 +26,17 @@ import {
 import { supabase } from '../lib/supabase'
 import { useToastStore } from '../store/toastStore'
 import type { BusinessType, ClientStatus, DeadlineType, DocumentTypeRow, ServiceType } from '../types/database'
+import { exportClientReport } from '../utils/pdfExport'
 
 const PIB_REGEX = /^\d{9,13}$/
+
+function todayISODateLocal(): string {
+  const d = new Date()
+  const y = d.getFullYear()
+  const m = `${d.getMonth() + 1}`.padStart(2, '0')
+  const day = `${d.getDate()}`.padStart(2, '0')
+  return `${y}-${m}-${day}`
+}
 
 function serviceClass(s: ServiceType): string {
   switch (s) {
@@ -226,6 +235,64 @@ export function ClientDetailPage() {
     }
   }
 
+  function handleExportReport() {
+    if (!client) {
+      return
+    }
+    toast('info', t('export.generating'))
+    const monthPeriod = currentMonthPeriod()
+    const docsForPdf = requirements.map((req) => {
+      const docForPeriod = documents.find(
+        (d) =>
+          d.document_type_id === req.document_type_id && d.period === monthPeriod,
+      )
+      return {
+        name: docName(req.document_types),
+        status: docForPeriod ? ('Primljeno' as const) : ('Nedostaje' as const),
+        uploadedAt: docForPeriod
+          ? new Date(docForPeriod.uploaded_at).toLocaleDateString('sr-Latn-RS')
+          : '—',
+      }
+    })
+
+    const today = todayISODateLocal()
+    const deadlinesForPdf: {
+      title: string
+      type: string
+      date: string
+      status: 'pending' | 'overdue'
+    }[] = []
+    for (const d of deadlines) {
+      const vis = deriveDeadlineVisualStatus(d, today)
+      if (vis === 'completed') {
+        continue
+      }
+      deadlinesForPdf.push({
+        title: d.title,
+        type: t(
+          `clientDetail.deadlineTypes.${d.type === 'custom' ? 'ostalo' : d.type}`,
+        ),
+        date: d.due_date,
+        status: vis,
+      })
+    }
+
+    exportClientReport(
+      {
+        name: client.name,
+        pib: client.pib,
+        address: client.address,
+        contactEmail: client.contact_email,
+        contactPhone: client.contact_phone,
+        businessType: t(`clients.businessType.${client.business_type}`),
+        services: client.services.map((s) => t(`clients.services.${s}`)).join(', '),
+        status: t(`clients.status.${client.status}`),
+      },
+      docsForPdf,
+      deadlinesForPdf,
+    )
+  }
+
   const tabItems = useMemo(
     () => [
       { id: 'overview', label: t('clientDetail.tabs.overview') },
@@ -288,6 +355,13 @@ export function ClientDetailPage() {
           >
             {t(`clients.status.${client.status}`)}
           </span>
+          <button
+            type="button"
+            onClick={handleExportReport}
+            className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50"
+          >
+            {t('export.report')}
+          </button>
           <button
             type="button"
             onClick={() => setEditOpen(true)}

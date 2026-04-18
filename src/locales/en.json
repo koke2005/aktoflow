@@ -5,6 +5,13 @@
   "common": {
     "loading": "Loading…"
   },
+  "export": {
+    "pdf": "Export PDF",
+    "generating": "Generating PDF…",
+    "clients": "Export PDF",
+    "report": "Export report",
+    "deadlines": "Export PDF"
+  },
   "calendar": {
     "days": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
     "months": [
