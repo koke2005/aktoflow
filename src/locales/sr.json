@@ -1,0 +1,304 @@
+{
+  "app": {
+    "name": "AktoFlow"
+  },
+  "common": {
+    "loading": "Učitavanje…"
+  },
+  "languageModal": {
+    "title": "Izaberite jezik / Choose language",
+    "descriptionSr": "Upravljajte dokumentima i rokovima vaših klijenata",
+    "descriptionEn": "Manage your clients' documents and deadlines",
+    "sr": "Srpski",
+    "en": "English"
+  },
+  "home": {
+    "headline": "Početna",
+    "description": "Alat za računovođe — rokovi, dokumenti i pregled obaveza na jednom mestu.",
+    "openDashboard": "Otvori kontrolnu tablu"
+  },
+  "auth": {
+    "loginTitle": "Prijava",
+    "registerTitle": "Registracija",
+    "email": "Email",
+    "password": "Lozinka",
+    "passwordConfirm": "Potvrda lozinke",
+    "fullName": "Ime i prezime",
+    "firmName": "Naziv firme",
+    "loginSubmit": "Prijavi se",
+    "registerSubmit": "Registruj se",
+    "submitting": "Slanje…",
+    "logout": "Odjavi se",
+    "noAccount": "Nemate nalog?",
+    "hasAccount": "Već imate nalog?",
+    "goToRegister": "Registrujte se",
+    "goToLogin": "Prijavite se",
+    "backHome": "Nazad na početnu",
+    "passwordMismatch": "Lozinke se ne poklapaju.",
+    "passwordTooShort": "Lozinka mora imati najmanje 6 karaktera.",
+    "confirmEmailHint": "Proverite email — poslali smo vam link za potvrdu. Nakon potvrde, prijavite se i dovršite podešavanje. Za lokalni razvoj u Supabase isključite „Confirm email”."
+  },
+  "nav": {
+    "dashboard": "Kontrolna tabla",
+    "clients": "Klijenti",
+    "deadlines": "Rokovi",
+    "settings": "Podešavanja",
+    "clientDetail": "Klijent",
+    "logout": "Odjavi se",
+    "firmName": "Firma"
+  },
+  "clients": {
+    "title": "Klijenti",
+    "addButton": "Dodaj klijenta",
+    "empty": "Još nema klijenata. Dodajte prvog klijenta.",
+    "modalTitle": "Novi klijent",
+    "addSuccess": "Klijent je dodat.",
+    "addError": "Dodavanje nije uspelo. Pokušajte ponovo.",
+    "open": "Otvori",
+    "col": {
+      "name": "Naziv",
+      "pib": "PIB",
+      "businessType": "Tip biznisa",
+      "services": "Usluge",
+      "status": "Status",
+      "openItems": "Otvorene stavke",
+      "actions": "Akcije"
+    },
+    "businessType": {
+      "doo": "DOO",
+      "sp": "SP",
+      "other": "Ostalo"
+    },
+    "services": {
+      "pdv": "PDV",
+      "porez": "Porez na dobit",
+      "godisnji": "Godišnji izveštaj",
+      "ostalo": "Ostalo"
+    },
+    "servicesShort": {
+      "pdv": "PDV",
+      "porez": "Porez",
+      "godisnji": "God.",
+      "ostalo": "Ost."
+    },
+    "status": {
+      "active": "Aktivan",
+      "inactive": "Neaktivan"
+    },
+    "form": {
+      "name": "Naziv firme",
+      "pib": "PIB",
+      "pibHint": "9–13 cifara",
+      "address": "Adresa",
+      "contactEmail": "Email kontakt",
+      "contactPhone": "Telefon kontakt",
+      "businessType": "Tip biznisa",
+      "services": "Usluge",
+      "status": "Status",
+      "cancel": "Otkaži",
+      "save": "Sačuvaj",
+      "saving": "Čuvanje…"
+    },
+    "validation": {
+      "nameRequired": "Unesite naziv firme.",
+      "pibInvalid": "PIB mora imati 9 do 13 cifara.",
+      "noFirm": "Niste povezani sa firmom."
+    }
+  },
+  "clientDetail": {
+    "notFound": "Klijent nije pronađen.",
+    "backToList": "Nazad na listu klijenata",
+    "edit": "Uredi",
+    "editTitle": "Uredi klijenta",
+    "editSaved": "Podaci su sačuvani.",
+    "editError": "Čuvanje nije uspelo.",
+    "tabs": {
+      "overview": "Pregled",
+      "documents": "Dokumenti",
+      "deadlines": "Rokovi",
+      "smart": "Smart detektor"
+    },
+    "overview": {
+      "basic": "Osnovni podaci",
+      "contact": "Kontakt",
+      "typeServices": "Tip i usluge",
+      "meta": "Status i datum",
+      "created": "Datum dodavanja"
+    },
+    "documents": {
+      "goSmart": "Dodaj zahtjev za dokument (Smart detektor)",
+      "col": {
+        "type": "Dokument",
+        "period": "Period",
+        "status": "Status",
+        "uploaded": "Datum uploada"
+      },
+      "received": "Primljeno",
+      "missing": "Nedostaje",
+      "upload": "Upload",
+      "view": "Pregled",
+      "viewError": "Ne mogu da otvorim fajl.",
+      "uploadSuccess": "Dokument je uploadovan.",
+      "uploadError": "Upload nije uspeo.",
+      "uploadTitle": "Upload dokumenta",
+      "file": "Fajl",
+      "periodMonth": "Period (mesec)",
+      "saveUpload": "Sačuvaj"
+    },
+    "deadlines": {
+      "addTitle": "Dodaj rok",
+      "title": "Naziv",
+      "due": "Datum",
+      "type": "Tip",
+      "notes": "Napomena",
+      "assign": "Dodeli korisniku",
+      "assignNone": "— niko —",
+      "addBtn": "Dodaj rok",
+      "addSuccess": "Rok je dodat.",
+      "addError": "Dodavanje roka nije uspelo.",
+      "complete": "Završi",
+      "completeError": "Ažuriranje statusa nije uspelo."
+    },
+    "deadlineTypes": {
+      "pdv": "PDV",
+      "porez": "Porez",
+      "godisnji": "Godišnji",
+      "ostalo": "Ostalo",
+      "custom": "Ostalo"
+    },
+    "deadlineStatus": {
+      "pending": "Na čekanju",
+      "overdue": "Zakasnelo",
+      "completed": "Završeno"
+    },
+    "smart": {
+      "analysisFor": "Analiza za {{period}}",
+      "received": "Primljeno ✓",
+      "missing": "Nedostaje ✗",
+      "total": "Ukupno zahteva",
+      "listTitle": "Zahtevi za tekući period",
+      "noRequirements": "Nema definisanih zahteva za dokumente.",
+      "suggestedTitle": "Preporučeni dokumenti",
+      "addPlus": "Dodaj +",
+      "noSuggestions": "Nema novih predloga za ovog klijenta.",
+      "customBtn": "Dodaj vlastiti zahtev",
+      "customTitle": "Novi zahtev (slobodan naziv)",
+      "nameSr": "Naziv (srpski)",
+      "nameEn": "Naziv (engleski)",
+      "customSave": "Dodaj zahtev",
+      "addedReq": "Zahtev je dodat.",
+      "addReqError": "Dodavanje zahteva nije uspelo.",
+      "addedCustom": "Vlastiti dokument je dodat.",
+      "addCustomError": "Dodavanje nije uspelo."
+    }
+  },
+  "deadlinesPage": {
+    "title": "Rokovi",
+    "addButton": "Dodaj rok",
+    "summaryOverdue": "Zakašnjelo",
+    "summarySoon": "Uskoro (7 dana)",
+    "summaryDone": "Završeno",
+    "filterStatus": "Status",
+    "filterAll": "Sve",
+    "filterPending": "Na čekanju",
+    "filterOverdue": "Zakašnjelo",
+    "filterCompleted": "Završeno",
+    "filterClient": "Klijent",
+    "filterAllClients": "Svi klijenti",
+    "clearDayFilter": "Ukloni filter datuma ({{date}})",
+    "tableEmpty": "Nema rokova koji odgovaraju filterima.",
+    "col": {
+      "client": "Klijent",
+      "title": "Naziv",
+      "type": "Tip",
+      "date": "Datum",
+      "status": "Status",
+      "assigned": "Dodeljeno",
+      "actions": "Akcije"
+    },
+    "actionComplete": "Završi",
+    "actionDelete": "Obriši",
+    "deleteConfirm": "Obrisati ovaj rok?",
+    "deleteSuccess": "Rok je obrisan.",
+    "deleteError": "Brisanje nije uspelo.",
+    "completeSuccess": "Rok je označen kao završen.",
+    "completeError": "Ažuriranje nije uspelo.",
+    "addSuccess": "Rok je dodat.",
+    "addError": "Dodavanje nije uspelo.",
+    "calendarTitle": "Kalendar (tekući mesec)",
+    "calendarHint": "Klik na dan filtrira tabelu po datumu. Boje: crveno = zakašnjelo, žuto = na čekanju, zeleno = završeno.",
+    "modalTitle": "Novi rok",
+    "formClient": "Klijent",
+    "formClientPlaceholder": "Izaberite klijenta",
+    "formTitle": "Naziv",
+    "formDate": "Datum",
+    "formType": "Tip",
+    "modalSubmit": "Sačuvaj"
+  },
+  "settings": {
+    "title": "Podešavanja",
+    "subtitle": "Firma, jezik, tim i pretplata.",
+    "firmSection": "Podaci firme",
+    "firmName": "Naziv firme",
+    "planLabel": "Plan",
+    "plan": {
+      "solo": "Solo",
+      "team": "Tim",
+      "agency": "Agencija"
+    },
+    "firmSave": "Sačuvaj firmu",
+    "firmSaveSuccess": "Podaci firme su sačuvani.",
+    "firmSaveError": "Čuvanje nije uspelo.",
+    "languageSection": "Jezik aplikacije",
+    "languageHint": "Izbor je isti kao pri prvom pokretanju (čuva se u pregledaču).",
+    "languageSaved": "Jezik je ažuriran.",
+    "teamSection": "Korisnici tima",
+    "teamHint": "Članovi sa pristupom (plan Tim ili Agencija).",
+    "teamEmpty": "Nema drugih korisnika.",
+    "teamSoloOnly": "U Solo planu je samo jedan korisnik. Nadgradite plan za tim.",
+    "teamName": "Ime",
+    "teamEmail": "Email",
+    "teamRole": "Uloga",
+    "billingSection": "Pretplata",
+    "billingPlaceholder": "Upravljanje pretplatom uskoro (Lemon Squeezy).",
+    "billingLemon": "Placeholder za Lemon Squeezy."
+  },
+  "dashboard": {
+    "title": "Kontrolna tabla",
+    "subtitle": "Pregled obaveza i rokova.",
+    "userName": "Korisnik",
+    "userEmail": "Email",
+    "profileMissing": "Profil nije učitan. Osvežite stranicu ili se ponovo prijavite.",
+    "radar": {
+      "pageTitle": "Today Radar",
+      "pageSubtitle": "Četiri zone: zakašnjelo, uskoro, nedostaje, završeno.",
+      "summaryOverdue": "Zakašnjelo",
+      "summarySoon": "Uskoro",
+      "summaryMissing": "Nedostaje",
+      "summaryDone": "Završeno",
+      "col": {
+        "overdue": "Zakašnjelo",
+        "soon": "Uskoro (7 dana)",
+        "missing": "Nedostaje",
+        "done": "Završeno"
+      },
+      "badgeAria": "{{count}} stavki",
+      "metaDue": "Rok: {{date}}",
+      "metaPeriod": "Period: {{period}}",
+      "metaUploaded": "Upload: {{date}}",
+      "actionComplete": "Završi",
+      "actionUpload": "Upload",
+      "actionView": "Pogledaj",
+      "empty": "Nema stavki.",
+      "noFirm": "Niste povezani sa firmom.",
+      "completeSuccess": "Rok je označen kao završen.",
+      "completeError": "Ažuriranje roka nije uspelo.",
+      "uploadModalTitle": "Upload dokumenta",
+      "uploadFile": "Fajl",
+      "uploadPeriod": "Period (mesec)",
+      "uploadSave": "Pošalji",
+      "uploadSuccess": "Dokument je dodat.",
+      "uploadError": "Upload nije uspeo."
+    }
+  }
+}

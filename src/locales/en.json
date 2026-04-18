@@ -1,0 +1,304 @@
+{
+  "app": {
+    "name": "AktoFlow"
+  },
+  "common": {
+    "loading": "Loading…"
+  },
+  "languageModal": {
+    "title": "Choose language / Izaberite jezik",
+    "descriptionSr": "Upravljajte dokumentima i rokovima vaših klijenata",
+    "descriptionEn": "Manage your clients' documents and deadlines",
+    "sr": "Serbian",
+    "en": "English"
+  },
+  "home": {
+    "headline": "Home",
+    "description": "A tool for accountants — deadlines, documents, and obligations in one place.",
+    "openDashboard": "Open dashboard"
+  },
+  "auth": {
+    "loginTitle": "Sign in",
+    "registerTitle": "Create account",
+    "email": "Email",
+    "password": "Password",
+    "passwordConfirm": "Confirm password",
+    "fullName": "Full name",
+    "firmName": "Company name",
+    "loginSubmit": "Sign in",
+    "registerSubmit": "Sign up",
+    "submitting": "Sending…",
+    "logout": "Log out",
+    "noAccount": "No account yet?",
+    "hasAccount": "Already have an account?",
+    "goToRegister": "Create one",
+    "goToLogin": "Sign in",
+    "backHome": "Back to home",
+    "passwordMismatch": "Passwords do not match.",
+    "passwordTooShort": "Password must be at least 6 characters.",
+    "confirmEmailHint": "Check your email — we sent a confirmation link. After confirming, sign in to finish setup. For local development, disable “Confirm email” in Supabase."
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "clients": "Clients",
+    "deadlines": "Deadlines",
+    "settings": "Settings",
+    "clientDetail": "Client",
+    "logout": "Log out",
+    "firmName": "Company"
+  },
+  "clients": {
+    "title": "Clients",
+    "addButton": "Add client",
+    "empty": "No clients yet. Add your first client.",
+    "modalTitle": "New client",
+    "addSuccess": "Client added.",
+    "addError": "Could not add client. Please try again.",
+    "open": "Open",
+    "col": {
+      "name": "Name",
+      "pib": "Tax ID",
+      "businessType": "Business type",
+      "services": "Services",
+      "status": "Status",
+      "openItems": "Open items",
+      "actions": "Actions"
+    },
+    "businessType": {
+      "doo": "LLC",
+      "sp": "Sole proprietor",
+      "other": "Other"
+    },
+    "services": {
+      "pdv": "VAT",
+      "porez": "Corporate income tax",
+      "godisnji": "Annual report",
+      "ostalo": "Other"
+    },
+    "servicesShort": {
+      "pdv": "VAT",
+      "porez": "Tax",
+      "godisnji": "Ann.",
+      "ostalo": "Oth."
+    },
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "form": {
+      "name": "Company name",
+      "pib": "Tax ID (PIB)",
+      "pibHint": "9–13 digits",
+      "address": "Address",
+      "contactEmail": "Contact email",
+      "contactPhone": "Contact phone",
+      "businessType": "Business type",
+      "services": "Services",
+      "status": "Status",
+      "cancel": "Cancel",
+      "save": "Save",
+      "saving": "Saving…"
+    },
+    "validation": {
+      "nameRequired": "Enter the company name.",
+      "pibInvalid": "Tax ID must be 9 to 13 digits.",
+      "noFirm": "You are not linked to a company."
+    }
+  },
+  "clientDetail": {
+    "notFound": "Client not found.",
+    "backToList": "Back to client list",
+    "edit": "Edit",
+    "editTitle": "Edit client",
+    "editSaved": "Changes saved.",
+    "editError": "Could not save changes.",
+    "tabs": {
+      "overview": "Overview",
+      "documents": "Documents",
+      "deadlines": "Deadlines",
+      "smart": "Smart detector"
+    },
+    "overview": {
+      "basic": "Basic details",
+      "contact": "Contact",
+      "typeServices": "Type & services",
+      "meta": "Status & date",
+      "created": "Created on"
+    },
+    "documents": {
+      "goSmart": "Add document requirement (Smart detector)",
+      "col": {
+        "type": "Document",
+        "period": "Period",
+        "status": "Status",
+        "uploaded": "Uploaded at"
+      },
+      "received": "Received",
+      "missing": "Missing",
+      "upload": "Upload",
+      "view": "View",
+      "viewError": "Could not open the file.",
+      "uploadSuccess": "Document uploaded.",
+      "uploadError": "Upload failed.",
+      "uploadTitle": "Upload document",
+      "file": "File",
+      "periodMonth": "Period (month)",
+      "saveUpload": "Save"
+    },
+    "deadlines": {
+      "addTitle": "Add deadline",
+      "title": "Title",
+      "due": "Due date",
+      "type": "Type",
+      "notes": "Notes",
+      "assign": "Assign to user",
+      "assignNone": "— none —",
+      "addBtn": "Add deadline",
+      "addSuccess": "Deadline added.",
+      "addError": "Could not add deadline.",
+      "complete": "Mark complete",
+      "completeError": "Could not update status."
+    },
+    "deadlineTypes": {
+      "pdv": "VAT",
+      "porez": "Tax",
+      "godisnji": "Annual",
+      "ostalo": "Other",
+      "custom": "Other"
+    },
+    "deadlineStatus": {
+      "pending": "Pending",
+      "overdue": "Overdue",
+      "completed": "Completed"
+    },
+    "smart": {
+      "analysisFor": "Analysis for {{period}}",
+      "received": "Received ✓",
+      "missing": "Missing ✗",
+      "total": "Total requirements",
+      "listTitle": "Requirements for current period",
+      "noRequirements": "No document requirements defined.",
+      "suggestedTitle": "Recommended documents",
+      "addPlus": "Add +",
+      "noSuggestions": "No new suggestions for this client.",
+      "customBtn": "Add custom requirement",
+      "customTitle": "New requirement (custom name)",
+      "nameSr": "Name (Serbian)",
+      "nameEn": "Name (English)",
+      "customSave": "Add requirement",
+      "addedReq": "Requirement added.",
+      "addReqError": "Could not add requirement.",
+      "addedCustom": "Custom document added.",
+      "addCustomError": "Could not add."
+    }
+  },
+  "deadlinesPage": {
+    "title": "Deadlines",
+    "addButton": "Add deadline",
+    "summaryOverdue": "Overdue",
+    "summarySoon": "Soon (7 days)",
+    "summaryDone": "Completed",
+    "filterStatus": "Status",
+    "filterAll": "All",
+    "filterPending": "Pending",
+    "filterOverdue": "Overdue",
+    "filterCompleted": "Completed",
+    "filterClient": "Client",
+    "filterAllClients": "All clients",
+    "clearDayFilter": "Clear date filter ({{date}})",
+    "tableEmpty": "No deadlines match the filters.",
+    "col": {
+      "client": "Client",
+      "title": "Title",
+      "type": "Type",
+      "date": "Date",
+      "status": "Status",
+      "assigned": "Assigned",
+      "actions": "Actions"
+    },
+    "actionComplete": "Mark done",
+    "actionDelete": "Delete",
+    "deleteConfirm": "Delete this deadline?",
+    "deleteSuccess": "Deadline deleted.",
+    "deleteError": "Could not delete.",
+    "completeSuccess": "Marked complete.",
+    "completeError": "Could not update.",
+    "addSuccess": "Deadline added.",
+    "addError": "Could not add deadline.",
+    "calendarTitle": "Calendar (current month)",
+    "calendarHint": "Click a day to filter the table. Colors: red = overdue, yellow = pending, green = completed.",
+    "modalTitle": "New deadline",
+    "formClient": "Client",
+    "formClientPlaceholder": "Select client",
+    "formTitle": "Title",
+    "formDate": "Date",
+    "formType": "Type",
+    "modalSubmit": "Save"
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Company, language, team and billing.",
+    "firmSection": "Company details",
+    "firmName": "Company name",
+    "planLabel": "Plan",
+    "plan": {
+      "solo": "Solo",
+      "team": "Team",
+      "agency": "Agency"
+    },
+    "firmSave": "Save company",
+    "firmSaveSuccess": "Company details saved.",
+    "firmSaveError": "Could not save.",
+    "languageSection": "App language",
+    "languageHint": "Same as first launch (stored in your browser).",
+    "languageSaved": "Language updated.",
+    "teamSection": "Team members",
+    "teamHint": "Members with access (Team or Agency plan).",
+    "teamEmpty": "No other users.",
+    "teamSoloOnly": "Solo plan includes a single user. Upgrade for team features.",
+    "teamName": "Name",
+    "teamEmail": "Email",
+    "teamRole": "Role",
+    "billingSection": "Subscription",
+    "billingPlaceholder": "Subscription management coming soon (Lemon Squeezy).",
+    "billingLemon": "Placeholder for Lemon Squeezy."
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Overview of tasks and deadlines.",
+    "userName": "User",
+    "userEmail": "Email",
+    "profileMissing": "Profile could not be loaded. Refresh the page or sign in again.",
+    "radar": {
+      "pageTitle": "Today Radar",
+      "pageSubtitle": "Four zones: overdue, soon, missing, done.",
+      "summaryOverdue": "Overdue",
+      "summarySoon": "Soon",
+      "summaryMissing": "Missing",
+      "summaryDone": "Done",
+      "col": {
+        "overdue": "Overdue",
+        "soon": "Soon (7 days)",
+        "missing": "Missing",
+        "done": "Completed"
+      },
+      "badgeAria": "{{count}} items",
+      "metaDue": "Due: {{date}}",
+      "metaPeriod": "Period: {{period}}",
+      "metaUploaded": "Uploaded: {{date}}",
+      "actionComplete": "Mark done",
+      "actionUpload": "Upload",
+      "actionView": "View",
+      "empty": "Nothing here.",
+      "noFirm": "No company linked to your account.",
+      "completeSuccess": "Deadline marked complete.",
+      "completeError": "Could not update deadline.",
+      "uploadModalTitle": "Upload document",
+      "uploadFile": "File",
+      "uploadPeriod": "Period (month)",
+      "uploadSave": "Submit",
+      "uploadSuccess": "Document added.",
+      "uploadError": "Upload failed."
+    }
+  }
+}
