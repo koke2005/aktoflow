@@ -291,14 +291,14 @@ export function DeadlinesPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 dark:text-slate-100">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <h2 className="text-xl font-semibold text-slate-900">{t('deadlinesPage.title')}</h2>
+        <h2 className="text-xl font-semibold text-slate-900 dark:text-slate-100">{t('deadlinesPage.title')}</h2>
         <div className="flex flex-wrap gap-2">
           <button
             type="button"
             onClick={handleExportPdf}
-            className="inline-flex justify-center rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
+            className="inline-flex justify-center rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600"
           >
             {t('export.deadlines')}
           </button>
@@ -313,21 +313,21 @@ export function DeadlinesPage() {
       </div>
 
       <div className="grid grid-cols-3 gap-3">
-        <div className="flex items-center gap-3 rounded-xl border-l-4 border-[#ef4444] bg-white px-4 py-3 shadow-sm">
+        <div className="flex items-center gap-3 rounded-xl border-l-4 border-[#ef4444] bg-white px-4 py-3 shadow-sm dark:bg-slate-800">
           <span className="text-2xl font-bold text-[#ef4444]">{summary.overdue}</span>
-          <span className="text-sm font-medium text-slate-700">
+          <span className="text-sm font-medium text-slate-700 dark:text-slate-200">
             {t('deadlinesPage.summaryOverdue')}
           </span>
         </div>
-        <div className="flex items-center gap-3 rounded-xl border-l-4 border-[#f97316] bg-white px-4 py-3 shadow-sm">
+        <div className="flex items-center gap-3 rounded-xl border-l-4 border-[#f97316] bg-white px-4 py-3 shadow-sm dark:bg-slate-800">
           <span className="text-2xl font-bold text-[#f97316]">{summary.soon}</span>
-          <span className="text-sm font-medium text-slate-700">
+          <span className="text-sm font-medium text-slate-700 dark:text-slate-200">
             {t('deadlinesPage.summarySoon')}
           </span>
         </div>
-        <div className="flex items-center gap-3 rounded-xl border-l-4 border-[#22c55e] bg-white px-4 py-3 shadow-sm">
+        <div className="flex items-center gap-3 rounded-xl border-l-4 border-[#22c55e] bg-white px-4 py-3 shadow-sm dark:bg-slate-800">
           <span className="text-2xl font-bold text-[#22c55e]">{summary.done}</span>
-          <span className="text-sm font-medium text-slate-700">
+          <span className="text-sm font-medium text-slate-700 dark:text-slate-200">
             {t('deadlinesPage.summaryDone')}
           </span>
         </div>
@@ -335,12 +335,12 @@ export function DeadlinesPage() {
 
       <section>
         <div className="mb-3 flex flex-wrap items-center gap-3">
-          <label className="flex items-center gap-2 text-sm text-slate-600">
+          <label className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
             <span>{t('deadlinesPage.filterStatus')}</span>
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value as StatusFilter)}
-              className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm"
+              className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100"
             >
               <option value="all">{t('deadlinesPage.filterAll')}</option>
               <option value="pending">{t('deadlinesPage.filterPending')}</option>
@@ -348,12 +348,12 @@ export function DeadlinesPage() {
               <option value="completed">{t('deadlinesPage.filterCompleted')}</option>
             </select>
           </label>
-          <label className="flex items-center gap-2 text-sm text-slate-600">
+          <label className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
             <span>{t('deadlinesPage.filterClient')}</span>
             <select
               value={clientFilter}
               onChange={(e) => setClientFilter(e.target.value)}
-              className="min-w-[180px] rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm"
+              className="min-w-[180px] rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100"
             >
               <option value="all">{t('deadlinesPage.filterAllClients')}</option>
               {clients.map((c) => (
@@ -377,9 +377,9 @@ export function DeadlinesPage() {
         {filteredRows.length === 0 ? (
           <EmptyState icon={CalendarDays} message={t('deadlinesPage.tableEmpty')} />
         ) : (
-          <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">
+          <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-800">
             <table className="w-full min-w-[900px] text-left text-sm">
-              <thead className="border-b border-slate-200 bg-slate-50 text-slate-600">
+              <thead className="border-b border-slate-200 bg-slate-50 text-slate-600 dark:border-slate-700 dark:bg-slate-700 dark:text-slate-300">
                 <tr>
                   <th className="px-3 py-2 font-medium">{t('deadlinesPage.col.client')}</th>
                   <th className="px-3 py-2 font-medium">{t('deadlinesPage.col.title')}</th>
@@ -396,15 +396,15 @@ export function DeadlinesPage() {
                   const canComplete =
                     vis === 'pending' || vis === 'overdue'
                   return (
-                    <tr key={row.id} className="border-b border-slate-100 last:border-0">
-                      <td className="px-3 py-2 font-medium text-slate-900">{row.client_name}</td>
+                    <tr key={row.id} className="border-b border-slate-100 last:border-0 dark:border-slate-700 dark:hover:bg-slate-700">
+                      <td className="px-3 py-2 font-medium text-slate-900 dark:text-slate-100">{row.client_name}</td>
                       <td className="px-3 py-2">{row.title}</td>
                       <td className="px-3 py-2">
                         <span className={typeTagClass()}>
                           {t(`clientDetail.deadlineTypes.${row.type === 'custom' ? 'ostalo' : row.type}`)}
                         </span>
                       </td>
-                      <td className="px-3 py-2 text-slate-700">{row.due_date}</td>
+                      <td className="px-3 py-2 text-slate-700 dark:text-slate-300">{row.due_date}</td>
                       <td className="px-3 py-2">
                         <span
                           className={`inline-flex rounded-full px-2 py-0.5 text-xs font-medium ${statusBadgeClass(vis)}`}
@@ -412,7 +412,7 @@ export function DeadlinesPage() {
                           {t(`clientDetail.deadlineStatus.${vis}`)}
                         </span>
                       </td>
-                      <td className="px-3 py-2 text-slate-600">
+                      <td className="px-3 py-2 text-slate-600 dark:text-slate-400">
                         {row.assigned_name ?? '—'}
                       </td>
                       <td className="px-3 py-2">
@@ -449,11 +449,11 @@ export function DeadlinesPage() {
         <h3 className="mb-3 text-sm font-semibold text-primary">
           {t('deadlinesPage.calendarTitle')}
         </h3>
-        <div className="max-w-md rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-          <p className="mb-3 text-center text-sm font-medium text-slate-700">
+        <div className="max-w-md rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+          <p className="mb-3 text-center text-sm font-medium text-slate-700 dark:text-slate-200">
             {monthTitle}
           </p>
-          <div className="grid grid-cols-7 gap-1 text-center text-xs font-medium text-slate-500">
+          <div className="grid grid-cols-7 gap-1 text-center text-xs font-medium text-slate-500 dark:text-slate-400">
             {weekdayLabels.map((d) => (
               <div key={d} className="py-1">
                 {d}
@@ -487,7 +487,7 @@ export function DeadlinesPage() {
               )
             })}
           </div>
-          <p className="mt-3 text-xs text-slate-500">{t('deadlinesPage.calendarHint')}</p>
+          <p className="mt-3 text-xs text-slate-500 dark:text-slate-400">{t('deadlinesPage.calendarHint')}</p>
         </div>
       </section>
 

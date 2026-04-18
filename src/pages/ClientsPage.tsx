@@ -159,14 +159,14 @@ export function ClientsPage() {
   }
 
   return (
-    <div>
+    <div className="dark:text-slate-100">
       <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <h2 className="text-xl font-semibold text-slate-900">{t('clients.title')}</h2>
+        <h2 className="text-xl font-semibold text-slate-900 dark:text-slate-100">{t('clients.title')}</h2>
         <div className="flex flex-wrap gap-2">
           <button
             type="button"
             onClick={handleExportPdf}
-            className="inline-flex justify-center rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
+            className="inline-flex justify-center rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600"
           >
             {t('export.clients')}
           </button>
@@ -194,9 +194,9 @@ export function ClientsPage() {
       ) : clients.length === 0 ? (
         <EmptyState icon={ClipboardList} message={t('clients.empty')} />
       ) : (
-        <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">
+        <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-800">
           <table className="w-full min-w-[720px] text-left text-sm">
-            <thead className="border-b border-slate-200 bg-slate-50 text-slate-600">
+            <thead className="border-b border-slate-200 bg-slate-50 text-slate-600 dark:border-slate-700 dark:bg-slate-700 dark:text-slate-300">
               <tr>
                 <th className="px-4 py-3 font-medium">{t('clients.col.name')}</th>
                 <th className="px-4 py-3 font-medium">{t('clients.col.pib')}</th>
@@ -211,18 +211,18 @@ export function ClientsPage() {
               {clients.map((c) => (
                 <tr
                   key={c.id}
-                  className="cursor-pointer border-b border-slate-100 transition-colors hover:bg-slate-50 last:border-0"
+                  className="cursor-pointer border-b border-slate-100 transition-colors hover:bg-slate-50 last:border-0 dark:border-slate-700 dark:hover:bg-slate-700"
                   onClick={() => navigate(`/clients/${c.id}`)}
                 >
-                  <td className="px-4 py-3 font-medium text-slate-900">{c.name}</td>
-                  <td className="px-4 py-3 text-slate-700">{formatPib(c.pib)}</td>
-                  <td className="px-4 py-3 text-slate-700">
+                  <td className="px-4 py-3 font-medium text-slate-900 dark:text-slate-100">{c.name}</td>
+                  <td className="px-4 py-3 text-slate-700 dark:text-slate-300">{formatPib(c.pib)}</td>
+                  <td className="px-4 py-3 text-slate-700 dark:text-slate-300">
                     {t(`clients.businessType.${c.business_type}`)}
                   </td>
                   <td className="px-4 py-3">
                     <div className="flex flex-wrap gap-1">
                       {c.services.length === 0 ? (
-                        <span className="text-slate-400">—</span>
+                        <span className="text-slate-400 dark:text-slate-500">—</span>
                       ) : (
                         c.services.map((s) => (
                           <span
@@ -246,7 +246,7 @@ export function ClientsPage() {
                       {t(`clients.status.${c.status}`)}
                     </span>
                   </td>
-                  <td className="px-4 py-3 text-slate-600">0</td>
+                  <td className="px-4 py-3 text-slate-600 dark:text-slate-400">0</td>
                   <td className="px-4 py-3">
                     <button
                       type="button"
@@ -278,7 +278,7 @@ export function ClientsPage() {
           ) : null}
 
           <div>
-            <label htmlFor="c-name" className="block text-sm font-medium text-slate-700">
+            <label htmlFor="c-name" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
               {t('clients.form.name')} *
             </label>
             <input
@@ -286,12 +286,12 @@ export function ClientsPage() {
               required
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900"
+              className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100"
             />
           </div>
 
           <div>
-            <label htmlFor="c-pib" className="block text-sm font-medium text-slate-700">
+            <label htmlFor="c-pib" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
               {t('clients.form.pib')} *
             </label>
             <input
@@ -300,20 +300,20 @@ export function ClientsPage() {
               inputMode="numeric"
               value={pib}
               onChange={(e) => setPib(e.target.value.replace(/\D/g, ''))}
-              className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900"
+              className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100"
             />
-            <p className="mt-1 text-xs text-slate-500">{t('clients.form.pibHint')}</p>
+            <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{t('clients.form.pibHint')}</p>
           </div>
 
           <div>
-            <label htmlFor="c-addr" className="block text-sm font-medium text-slate-700">
+            <label htmlFor="c-addr" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
               {t('clients.form.address')}
             </label>
             <input
               id="c-addr"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
-              className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900"
+              className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100"
             />
           </div>
 

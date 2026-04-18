@@ -323,19 +323,19 @@ export function ClientDetailPage() {
   }
 
   return (
-    <div>
-      <nav className="text-sm text-slate-600">
+    <div className="dark:text-slate-100">
+      <nav className="text-sm text-slate-600 dark:text-slate-300">
         <Link to="/clients" className="text-accent hover:underline">
           {t('nav.clients')}
         </Link>
-        <span className="mx-2 text-slate-400">/</span>
-        <span className="font-medium text-slate-900">{client.name}</span>
+        <span className="mx-2 text-slate-400 dark:text-slate-500">/</span>
+        <span className="font-medium text-slate-900 dark:text-slate-100">{client.name}</span>
       </nav>
 
       <div className="mt-4 flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-primary">{client.name}</h1>
-          <p className="mt-1 text-sm text-slate-500">PIB: {client.pib ?? '—'}</p>
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">PIB: {client.pib ?? '—'}</p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
           {client.services.map((s) => (
@@ -358,14 +358,14 @@ export function ClientDetailPage() {
           <button
             type="button"
             onClick={handleExportReport}
-            className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50"
+            className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600"
           >
             {t('export.report')}
           </button>
           <button
             type="button"
             onClick={() => setEditOpen(true)}
-            className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-primary hover:bg-slate-50"
+            className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-primary hover:bg-slate-50 dark:border-slate-600 dark:bg-slate-700 dark:hover:bg-slate-600"
           >
             {t('clientDetail.edit')}
           </button>
@@ -377,7 +377,7 @@ export function ClientDetailPage() {
 
         {tab === 'overview' && (
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            <div className="rounded-xl bg-white p-4 shadow-sm">
+            <div className="rounded-xl bg-white p-4 shadow-sm dark:bg-slate-800">
               <h3 className="text-sm font-semibold text-slate-500">
                 {t('clientDetail.overview.basic')}
               </h3>
@@ -396,7 +396,7 @@ export function ClientDetailPage() {
                 </div>
               </dl>
             </div>
-            <div className="rounded-xl bg-white p-4 shadow-sm">
+            <div className="rounded-xl bg-white p-4 shadow-sm dark:bg-slate-800">
               <h3 className="text-sm font-semibold text-slate-500">
                 {t('clientDetail.overview.contact')}
               </h3>
@@ -411,7 +411,7 @@ export function ClientDetailPage() {
                 </div>
               </dl>
             </div>
-            <div className="rounded-xl bg-white p-4 shadow-sm">
+            <div className="rounded-xl bg-white p-4 shadow-sm dark:bg-slate-800">
               <h3 className="text-sm font-semibold text-slate-500">
                 {t('clientDetail.overview.typeServices')}
               </h3>
@@ -426,7 +426,7 @@ export function ClientDetailPage() {
                 ))}
               </div>
             </div>
-            <div className="rounded-xl bg-white p-4 shadow-sm">
+            <div className="rounded-xl bg-white p-4 shadow-sm dark:bg-slate-800">
               <h3 className="text-sm font-semibold text-slate-500">
                 {t('clientDetail.overview.meta')}
               </h3>
@@ -463,9 +463,9 @@ export function ClientDetailPage() {
                 message={t('clientDetail.documents.emptyState')}
               />
             ) : (
-              <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+              <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-800">
                 <table className="w-full min-w-[800px] text-left text-sm">
-                  <thead className="border-b bg-slate-50 text-slate-600">
+                  <thead className="border-b bg-slate-50 text-slate-600 dark:border-slate-700 dark:bg-slate-700 dark:text-slate-300">
                     <tr>
                       <th className="px-3 py-2">{t('clientDetail.documents.col.type')}</th>
                       <th className="px-3 py-2">{t('clientDetail.documents.col.period')}</th>
@@ -482,7 +482,7 @@ export function ClientDetailPage() {
                           d.document_type_id === req.document_type_id && d.period === period,
                       )
                       return (
-                        <tr key={req.id} className="border-b border-slate-100">
+                        <tr key={req.id} className="border-b border-slate-100 dark:border-slate-700 dark:hover:bg-slate-700">
                           <td className="px-3 py-2 font-medium">{docName(dt)}</td>
                           <td className="px-3 py-2">{period}</td>
                           <td className="px-3 py-2">
@@ -496,7 +496,7 @@ export function ClientDetailPage() {
                               </span>
                             )}
                           </td>
-                          <td className="px-3 py-2 text-slate-600">
+                          <td className="px-3 py-2 text-slate-600 dark:text-slate-400">
                             {docForPeriod
                               ? new Date(docForPeriod.uploaded_at).toLocaleString()
                               : '—'}
@@ -541,7 +541,7 @@ export function ClientDetailPage() {
           <div className="mt-6 space-y-8">
             <form
               onSubmit={onAddDeadline}
-              className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm"
+              className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-800"
             >
               <h3 className="text-sm font-semibold text-primary">
                 {t('clientDetail.deadlines.addTitle')}
@@ -555,7 +555,7 @@ export function ClientDetailPage() {
                     required
                     value={dlTitle}
                     onChange={(e) => setDlTitle(e.target.value)}
-                    className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"
+                    className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100"
                   />
                 </div>
                 <div>
@@ -567,7 +567,7 @@ export function ClientDetailPage() {
                     required
                     value={dlDate}
                     onChange={(e) => setDlDate(e.target.value)}
-                    className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"
+                    className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100"
                   />
                 </div>
                 <div>
@@ -577,7 +577,7 @@ export function ClientDetailPage() {
                   <select
                     value={dlType}
                     onChange={(e) => setDlType(e.target.value as DeadlineType)}
-                    className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"
+                    className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100"
                   >
                     <option value="pdv">{t('clientDetail.deadlineTypes.pdv')}</option>
                     <option value="porez">{t('clientDetail.deadlineTypes.porez')}</option>
@@ -592,7 +592,7 @@ export function ClientDetailPage() {
                   <input
                     value={dlNotes}
                     onChange={(e) => setDlNotes(e.target.value)}
-                    className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"
+                    className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100"
                   />
                 </div>
                 {(firmPlan === 'team' || firmPlan === 'agency') && teamMembers.length > 0 ? (
@@ -603,7 +603,7 @@ export function ClientDetailPage() {
                     <select
                       value={dlAssign}
                       onChange={(e) => setDlAssign(e.target.value)}
-                      className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"
+                      className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100"
                     >
                       <option value="">{t('clientDetail.deadlines.assignNone')}</option>
                       {teamMembers.map((u) => (
@@ -627,9 +627,9 @@ export function ClientDetailPage() {
             {dlLoading ? (
               <Spinner label={t('common.loading')} fullPage />
             ) : (
-              <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+              <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-800">
                 <table className="w-full min-w-[720px] text-sm">
-                  <thead className="border-b bg-slate-50 text-slate-600">
+                  <thead className="border-b bg-slate-50 text-slate-600 dark:border-slate-700 dark:bg-slate-700 dark:text-slate-300">
                     <tr>
                       <th className="px-3 py-2">{t('clientDetail.deadlines.title')}</th>
                       <th className="px-3 py-2">{t('clientDetail.deadlines.type')}</th>
@@ -641,7 +641,7 @@ export function ClientDetailPage() {
                   </thead>
                   <tbody>
                     {deadlines.map((d) => (
-                      <tr key={d.id} className="border-b border-slate-100">
+                      <tr key={d.id} className="border-b border-slate-100 dark:border-slate-700 dark:hover:bg-slate-700">
                         <td className="px-3 py-2 font-medium">{d.title}</td>
                         <td className="px-3 py-2">
                           {t(
@@ -667,7 +667,7 @@ export function ClientDetailPage() {
                             {t(`clientDetail.deadlineStatus.${d.status}`)}
                           </span>
                         </td>
-                        <td className="px-3 py-2 text-slate-600">
+                        <td className="px-3 py-2 text-slate-600 dark:text-slate-400">
                           {d.assigned_to
                             ? teamMembers.find((m) => m.id === d.assigned_to)?.full_name ?? '—'
                             : '—'}

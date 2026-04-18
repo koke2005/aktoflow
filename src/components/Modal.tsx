@@ -44,7 +44,7 @@ export function Modal({ open, title, onClose, children, size = 'md' }: ModalProp
         onClick={onClose}
       />
       <div
-        className={`relative w-full ${width} max-h-[90vh] overflow-y-auto rounded-2xl bg-white p-6 shadow-xl`}
+        className={`relative w-full ${width} max-h-[90vh] overflow-y-auto rounded-2xl bg-white p-6 shadow-xl dark:border dark:border-slate-700 dark:bg-slate-800`}
       >
         <h2 id="modal-title" className="text-lg font-semibold text-primary">
           {title}

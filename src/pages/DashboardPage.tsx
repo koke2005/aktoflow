@@ -29,7 +29,7 @@ type ColumnProps = {
 function Column({ titleKey, headerClass, count, children }: ColumnProps) {
   const { t } = useTranslation()
   return (
-    <div className="flex h-full min-h-0 min-w-0 flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+    <div className="flex h-full min-h-0 min-w-0 flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-800">
       <div
         className={`flex shrink-0 items-center justify-between px-3 py-2.5 text-white ${headerClass}`}
       >
@@ -68,10 +68,10 @@ function CardShell({
       ? 'w-full rounded-lg bg-primary py-1.5 text-xs font-medium text-white hover:opacity-90'
       : 'w-full rounded-lg border border-slate-200 bg-white py-1.5 text-xs font-medium text-slate-800 hover:bg-slate-50'
   return (
-    <div className="rounded-lg border border-slate-100 bg-slate-50/80 p-3 shadow-sm transition-shadow hover:shadow-md">
-      <p className="font-bold text-slate-900">{clientName}</p>
-      <p className="mt-1 text-sm text-slate-700">{subtitle}</p>
-      <p className="mt-0.5 text-xs text-slate-500">{meta}</p>
+    <div className="rounded-lg border border-slate-100 bg-slate-50/80 p-3 shadow-sm transition-shadow hover:shadow-md dark:border-slate-700 dark:bg-slate-700/60">
+      <p className="font-bold text-slate-900 dark:text-slate-100">{clientName}</p>
+      <p className="mt-1 text-sm text-slate-700 dark:text-slate-200">{subtitle}</p>
+      <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">{meta}</p>
       <button type="button" onClick={onAction} className={`mt-3 ${btnClass}`}>
         {actionLabel}
       </button>
@@ -267,34 +267,34 @@ export function DashboardPage() {
     counts.done === 0
 
   return (
-    <div className="flex min-w-0 flex-col gap-4">
+    <div className="flex min-w-0 flex-col gap-4 dark:text-slate-100">
       <div>
         <h2 className="text-xl font-semibold text-primary">{t('dashboard.radar.pageTitle')}</h2>
-        <p className="mt-1 text-sm text-slate-600">{t('dashboard.radar.pageSubtitle')}</p>
+        <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{t('dashboard.radar.pageSubtitle')}</p>
       </div>
 
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-        <div className="flex items-center gap-3 rounded-xl border-l-4 border-[#ef4444] bg-white px-4 py-3 shadow-sm">
+        <div className="flex items-center gap-3 rounded-xl border-l-4 border-[#ef4444] bg-white px-4 py-3 shadow-sm dark:bg-slate-800">
           <span className="text-2xl font-bold text-[#ef4444]">{counts.overdue}</span>
-          <span className="text-sm font-medium text-slate-700">
+          <span className="text-sm font-medium text-slate-700 dark:text-slate-200">
             {t('dashboard.radar.summaryOverdue')}
           </span>
         </div>
-        <div className="flex items-center gap-3 rounded-xl border-l-4 border-[#f97316] bg-white px-4 py-3 shadow-sm">
+        <div className="flex items-center gap-3 rounded-xl border-l-4 border-[#f97316] bg-white px-4 py-3 shadow-sm dark:bg-slate-800">
           <span className="text-2xl font-bold text-[#f97316]">{counts.soon}</span>
-          <span className="text-sm font-medium text-slate-700">
+          <span className="text-sm font-medium text-slate-700 dark:text-slate-200">
             {t('dashboard.radar.summarySoon')}
           </span>
         </div>
-        <div className="flex items-center gap-3 rounded-xl border-l-4 border-[#eab308] bg-white px-4 py-3 shadow-sm">
+        <div className="flex items-center gap-3 rounded-xl border-l-4 border-[#eab308] bg-white px-4 py-3 shadow-sm dark:bg-slate-800">
           <span className="text-2xl font-bold text-[#eab308]">{counts.missing}</span>
-          <span className="text-sm font-medium text-slate-700">
+          <span className="text-sm font-medium text-slate-700 dark:text-slate-200">
             {t('dashboard.radar.summaryMissing')}
           </span>
         </div>
-        <div className="flex items-center gap-3 rounded-xl border-l-4 border-[#22c55e] bg-white px-4 py-3 shadow-sm">
+        <div className="flex items-center gap-3 rounded-xl border-l-4 border-[#22c55e] bg-white px-4 py-3 shadow-sm dark:bg-slate-800">
           <span className="text-2xl font-bold text-[#22c55e]">{counts.done}</span>
-          <span className="text-sm font-medium text-slate-700">
+          <span className="text-sm font-medium text-slate-700 dark:text-slate-200">
             {t('dashboard.radar.summaryDone')}
           </span>
         </div>
@@ -339,7 +339,7 @@ export function DashboardPage() {
         >
           {buckets.missingGrouped.map((group) => (
             <div key={group.clientId} className="mb-3 last:mb-0">
-              <p className="sticky top-0 z-[1] bg-[#eab308]/20 px-2 py-1 text-xs font-bold text-slate-900">
+              <p className="sticky top-0 z-[1] bg-[#eab308]/20 px-2 py-1 text-xs font-bold text-slate-900 dark:text-slate-100">
                 {group.clientName}
               </p>
               <div className="mt-1 space-y-2 pl-1">
@@ -380,11 +380,11 @@ export function DashboardPage() {
       >
         {uploadCtx ? (
           <form onSubmit={handleUploadSubmit} className="space-y-4">
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-slate-600 dark:text-slate-300">
               {pickTitle(uploadCtx.docTitleSr, uploadCtx.docTitleEn, i18n.language)}
             </p>
             <div>
-              <label className="block text-sm text-slate-700">
+              <label className="block text-sm text-slate-700 dark:text-slate-300">
                 {t('dashboard.radar.uploadFile')}
               </label>
               <input
@@ -395,14 +395,14 @@ export function DashboardPage() {
               />
             </div>
             <div>
-              <label className="block text-sm text-slate-700">
+              <label className="block text-sm text-slate-700 dark:text-slate-300">
                 {t('dashboard.radar.uploadPeriod')}
               </label>
               <input
                 type="month"
                 value={uploadPeriod}
                 onChange={(e) => setUploadPeriod(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"
+                className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100"
               />
             </div>
             <button

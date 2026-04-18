@@ -282,6 +282,10 @@
     "languageSection": "Jezik aplikacije",
     "languageHint": "Izbor je isti kao pri prvom pokretanju (čuva se u pregledaču).",
     "languageSaved": "Jezik je ažuriran.",
+    "appearance": "Izgled",
+    "darkMode": "Tamni mod",
+    "lightMode": "Svjetli mod",
+    "darkModeDesc": "Prebaci između svjetlog i tamnog prikaza",
     "teamSection": "Korisnici tima",
     "teamHint": "Članovi sa pristupom (plan Tim ili Agencija).",
     "teamEmpty": "Nema drugih korisnika.",
@@ -292,6 +296,9 @@
     "billingSection": "Pretplata",
     "billingPlaceholder": "Upravljanje pretplatom uskoro (Lemon Squeezy).",
     "billingLemon": "Placeholder za Lemon Squeezy."
+  },
+  "theme": {
+    "toggle": "Promijeni temu"
   },
   "dashboard": {
     "title": "Kontrolna tabla",

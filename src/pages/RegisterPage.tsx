@@ -57,7 +57,7 @@ export function RegisterPage() {
   }
 
   return (
-    <div className="flex min-h-dvh flex-col justify-center bg-slate-50 px-4 py-12">
+    <div className="flex min-h-dvh flex-col justify-center bg-slate-50 px-4 py-12 dark:bg-slate-900">
       <div className="mx-auto w-full max-w-md">
         <p className="text-center text-sm font-semibold uppercase tracking-wide text-accent">
           {t('app.name')}
@@ -68,7 +68,7 @@ export function RegisterPage() {
 
         {needsEmailConfirmation ? (
           <div
-            className="mt-8 rounded-xl border border-status-caution bg-amber-50 p-6 text-center text-sm text-slate-800"
+            className="mt-8 rounded-xl border border-status-caution bg-amber-50 p-6 text-center text-sm text-slate-800 dark:bg-amber-900/30 dark:text-slate-100"
             role="status"
           >
             {t('auth.confirmEmailHint')}
@@ -76,7 +76,7 @@ export function RegisterPage() {
         ) : (
           <form
             onSubmit={handleSubmit}
-            className="mt-8 space-y-4 rounded-xl border border-slate-200 bg-white p-6 shadow-sm"
+            className="mt-8 space-y-4 rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-800"
           >
             {(authError || localError) && (
               <p
@@ -88,7 +88,7 @@ export function RegisterPage() {
             )}
 
             <div>
-              <label htmlFor="reg-fullname" className="block text-sm font-medium text-slate-700">
+              <label htmlFor="reg-fullname" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
                 {t('auth.fullName')}
               </label>
               <input
@@ -99,12 +99,12 @@ export function RegisterPage() {
                 required
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100"
               />
             </div>
 
             <div>
-              <label htmlFor="reg-firm" className="block text-sm font-medium text-slate-700">
+              <label htmlFor="reg-firm" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
                 {t('auth.firmName')}
               </label>
               <input
@@ -114,12 +114,12 @@ export function RegisterPage() {
                 required
                 value={firmName}
                 onChange={(e) => setFirmName(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100"
               />
             </div>
 
             <div>
-              <label htmlFor="reg-email" className="block text-sm font-medium text-slate-700">
+              <label htmlFor="reg-email" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
                 {t('auth.email')}
               </label>
               <input
@@ -130,12 +130,12 @@ export function RegisterPage() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100"
               />
             </div>
 
             <div>
-              <label htmlFor="reg-password" className="block text-sm font-medium text-slate-700">
+              <label htmlFor="reg-password" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
                 {t('auth.password')}
               </label>
               <input
@@ -146,14 +146,14 @@ export function RegisterPage() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100"
               />
             </div>
 
             <div>
               <label
                 htmlFor="reg-password-confirm"
-                className="block text-sm font-medium text-slate-700"
+                className="block text-sm font-medium text-slate-700 dark:text-slate-300"
               >
                 {t('auth.passwordConfirm')}
               </label>
@@ -165,7 +165,7 @@ export function RegisterPage() {
                 required
                 value={passwordConfirm}
                 onChange={(e) => setPasswordConfirm(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-900 shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-slate-600 dark:bg-slate-700 dark:text-slate-100"
               />
             </div>
 
@@ -180,7 +180,7 @@ export function RegisterPage() {
         )}
 
         {!needsEmailConfirmation && (
-          <p className="mt-6 text-center text-sm text-slate-600">
+          <p className="mt-6 text-center text-sm text-slate-600 dark:text-slate-400">
             {t('auth.hasAccount')}{' '}
             <Link to="/login" className="font-medium text-accent hover:underline">
               {t('auth.goToLogin')}
@@ -189,7 +189,7 @@ export function RegisterPage() {
         )}
 
         <p className="mt-4 text-center">
-          <Link to="/" className="text-sm text-slate-500 hover:text-primary">
+          <Link to="/" className="text-sm text-slate-500 hover:text-primary dark:text-slate-400">
             {t('auth.backHome')}
           </Link>
         </p>

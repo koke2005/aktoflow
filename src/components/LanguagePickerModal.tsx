@@ -33,7 +33,7 @@ export function LanguagePickerModal({ open, onClose }: LanguagePickerModalProps)
       aria-modal="true"
       aria-labelledby="lang-modal-title"
     >
-      <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-xl">
+      <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-xl dark:bg-slate-800">
         <p className="text-center text-lg font-bold tracking-tight text-accent">{t('app.name')}</p>
         <h2
           id="lang-modal-title"
@@ -41,8 +41,8 @@ export function LanguagePickerModal({ open, onClose }: LanguagePickerModalProps)
         >
           {t('languageModal.title')}
         </h2>
-        <p className="mt-2 text-center text-sm text-slate-600">{t('languageModal.descriptionSr')}</p>
-        <p className="text-center text-sm text-slate-600">{t('languageModal.descriptionEn')}</p>
+        <p className="mt-2 text-center text-sm text-slate-600 dark:text-slate-300">{t('languageModal.descriptionSr')}</p>
+        <p className="text-center text-sm text-slate-600 dark:text-slate-300">{t('languageModal.descriptionEn')}</p>
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center sm:gap-4">
           <button

@@ -282,6 +282,10 @@
     "languageSection": "App language",
     "languageHint": "Same as first launch (stored in your browser).",
     "languageSaved": "Language updated.",
+    "appearance": "Appearance",
+    "darkMode": "Dark mode",
+    "lightMode": "Light mode",
+    "darkModeDesc": "Switch between light and dark display",
     "teamSection": "Team members",
     "teamHint": "Members with access (Team or Agency plan).",
     "teamEmpty": "No other users.",
@@ -292,6 +296,9 @@
     "billingSection": "Subscription",
     "billingPlaceholder": "Subscription management coming soon (Lemon Squeezy).",
     "billingLemon": "Placeholder for Lemon Squeezy."
+  },
+  "theme": {
+    "toggle": "Toggle theme"
   },
   "dashboard": {
     "title": "Dashboard",

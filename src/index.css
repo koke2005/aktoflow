@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@custom-variant dark (&:where(.dark, .dark *));
 
 /* Tema: Inter, brend boje (AktoFlow) */
 @theme {
@@ -15,12 +16,34 @@
   --color-status-success: #22c55e;
 }
 
+:root {
+  --app-bg: #ffffff;
+  --app-sidebar: #f8fafc;
+  --app-text: #1e293b;
+  --app-border: #e2e8f0;
+  --app-card: #ffffff;
+  --app-input-bg: #ffffff;
+  --app-input-text: #1e293b;
+}
+
+html.dark {
+  --app-bg: #0f172a;
+  --app-sidebar: #1e293b;
+  --app-text: #f1f5f9;
+  --app-border: #334155;
+  --app-card: #1e293b;
+  --app-input-bg: #1e293b;
+  --app-input-text: #f1f5f9;
+}
+
 html {
   @apply antialiased;
 }
 
 body {
-  @apply m-0 min-h-dvh bg-white font-sans text-slate-900;
+  @apply m-0 min-h-dvh font-sans;
+  background-color: var(--app-bg);
+  color: var(--app-text);
 }
 
 #root {
